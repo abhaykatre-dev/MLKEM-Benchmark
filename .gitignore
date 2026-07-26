@@ -1,0 +1,27 @@
+# STM32CubeIDE & Eclipse Build Artifacts
+.metadata/
+*.o
+*.elf
+*.bin
+*.hex
+*.d
+*.su
+*.cyclo
+*.map
+Debug/
+Release/
+firmware.zip
+
+# Submodules / Sub-repositories
+pqclean/
+
+# Python & Renode Temporary Files
+__pycache__/
+*.pyc
+*.txt.[0-9]*
+*.log
+
+# OS Generated Files
+Thumbs.db
+Desktop.ini
+.DS_Store

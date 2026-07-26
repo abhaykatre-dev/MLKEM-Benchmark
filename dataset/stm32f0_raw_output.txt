@@ -1,0 +1,30 @@
+
+=======================================================
+  RESEARCH-GRADE ML-KEM BENCHMARK (NIST FIPS 203)
+  Target Processor: STM32F072RBT6 (ARM Cortex-M0)
+  Clock Speed:      48 MHz | TIM2 Prescaler 1us/tick
+  Memory Specs:     128 KB Flash | 16 KB SRAM
+  Sampling Count:   N = 1 Iteration (Interrupt Isolated)
+=======================================================
+
+Executing ML-KEM-512 Benchmark (1 run)...
+[ VARIANT: ML-KEM-512 ]
+  KeyGen :    10534 us |     505632 cycles | StdDev 0 us
+  Encap  :    11479 us |     550992 cycles | StdDev 0 us
+  Decap  :    13193 us |     633264 cycles | StdDev 0 us
+  Status : PASS [SS Match]
+
+--- CSV DATASET OUTPUT ---
+variant,keygen_cycles,encap_cycles,decap_cycles,keygen_us,encap_us,decap_us,keygen_stddev,encap_stddev,decap_stddev,decap_ok
+ML-KEM-512,505632,550992,633264,10534,11479,13193,0,0,0,1
+ML-KEM-768,OOM,OOM,OOM,OOM,OOM,OOM,0,0,0,2
+ML-KEM-1024,OOM,OOM,OOM,OOM,OOM,OOM,0,0,0,2
+
+=======================================================
+  NOTE: ML-KEM-768 and ML-KEM-1024 exceed 16 KB SRAM
+  ML-KEM-768  requires ~10 KB peak stack -> OOM risk
+  ML-KEM-1024 requires ~14 KB peak stack -> OOM
+  Cortex-M0 supports ML-KEM-512 ONLY.
+=======================================================
+  STM32F0 BENCHMARK SUITE COMPLETE!
+=======================================================

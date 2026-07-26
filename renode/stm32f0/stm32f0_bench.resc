@@ -1,0 +1,18 @@
+# Renode Simulation Script — STM32F0 ML-KEM Benchmark
+# Auto-Quit Enabled: Closes automatically when benchmark finishes!
+
+mach create "stm32f0"
+machine LoadPlatformDescription @platforms/boards/stm32f072b_discovery.repl
+
+sysbus LoadELF @C:/Users/abhay/OneDrive/Desktop/MLKEM-PROJECT/firmware/stm32f0/mlkem_stm32f0_bench/Debug/mlkem_stm32f0_bench.elf
+
+showAnalyzer usart2
+usart2 CreateFileBackend @C:/Users/abhay/OneDrive/Desktop/MLKEM-PROJECT/dataset/stm32f0_raw_output.txt true
+
+logLevel 3 sysbus
+
+start
+
+# Wait for benchmark suite completion message in UART, then quit automatically!
+usart2 WaitFor "STM32F0 BENCHMARK SUITE COMPLETE!" 60000
+quit

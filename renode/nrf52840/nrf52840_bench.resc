@@ -1,0 +1,18 @@
+# Renode Simulation Script — nRF52840 ML-KEM Benchmark
+# Auto-Quit Enabled: Closes automatically when benchmark finishes!
+
+mach create "nrf52840"
+machine LoadPlatformDescription @platforms/boards/stm32f4_discovery.repl
+
+sysbus LoadELF @C:/Users/abhay/OneDrive/Desktop/MLKEM-PROJECT/firmware/nrf52840/mlkem_nrf52840_bench/Debug/mlkem_nrf52840_bench.elf
+
+showAnalyzer usart2
+usart2 CreateFileBackend @C:/Users/abhay/OneDrive/Desktop/MLKEM-PROJECT/dataset/nrf52840_raw_output.txt true
+
+logLevel 3 sysbus
+
+start
+
+# Wait for benchmark suite completion message in UART, then quit automatically!
+usart2 WaitFor "nRF52840 BENCHMARK SUITE COMPLETE!" 60000
+quit

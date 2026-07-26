@@ -1,0 +1,42 @@
+
+=======================================================
+  RESEARCH-GRADE ML-KEM BENCHMARK (NIST FIPS 203)
+  Target Processor: STM32F407VGT6 (ARM Cortex-M4F)
+  Clock Speed:      168 MHz | TIM2 Prescaler 1us/tick
+  Memory Specs:     1024 KB Flash | 192 KB SRAM
+  Sampling Count:   N = 5 Iterations (Interrupt Isolated)
+=======================================================
+
+Executing ML-KEM-512 Benchmark (5 runs)...
+
+[ VARIANT: ML-KEM-512 ]
+  KeyGen :     2566 us |     431088 cycles | Min  2566 | Max  2567 | StdDev 0 us
+  Encap  :     3056 us |     513408 cycles | Min  3055 | Max  3058 | StdDev 1 us
+  Decap  :     3825 us |     642600 cycles | Min  3825 | Max  3827 | StdDev 1 us
+  Status : PASS [Shared Secret Match]
+
+Executing ML-KEM-768 Benchmark (5 runs)...
+
+[ VARIANT: ML-KEM-768 ]
+  KeyGen :     4223 us |     709464 cycles | Min  4223 | Max  4225 | StdDev 1 us
+  Encap  :     4951 us |     831768 cycles | Min  4951 | Max  4953 | StdDev 1 us
+  Decap  :     5975 us |    1003800 cycles | Min  5974 | Max  5977 | StdDev 1 us
+  Status : PASS [Shared Secret Match]
+
+Executing ML-KEM-1024 Benchmark (5 runs)...
+
+[ VARIANT: ML-KEM-1024 ]
+  KeyGen :     6625 us |    1113000 cycles | Min  6593 | Max  6647 | StdDev 25 us
+  Encap  :     7481 us |    1256808 cycles | Min  7449 | Max  7504 | StdDev 26 us
+  Decap  :     8788 us |    1476384 cycles | Min  8755 | Max  8810 | StdDev 26 us
+  Status : PASS [Shared Secret Match]
+
+--- CSV DATASET OUTPUT ---
+variant,keygen_cycles,encap_cycles,decap_cycles,keygen_us,encap_us,decap_us,keygen_stddev,encap_stddev,decap_stddev,decap_ok
+ML-KEM-512,431088,513408,642600,2566,3056,3825,0,1,1,1
+ML-KEM-768,709464,831768,1003800,4223,4951,5975,1,1,1,1
+ML-KEM-1024,1113000,1256808,1476384,6625,7481,8788,25,26,26,1
+
+=======================================================
+  STM32F4 BENCHMARK SUITE COMPLETE!
+=======================================================

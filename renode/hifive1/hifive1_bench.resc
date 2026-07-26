@@ -1,0 +1,18 @@
+# Renode Simulation Script — HiFive1 Profile ML-KEM Benchmark
+# Auto-Quit Enabled: Closes automatically when benchmark finishes!
+
+mach create "hifive1"
+machine LoadPlatformDescription @platforms/boards/stm32f072b_discovery.repl
+
+sysbus LoadELF @C:/Users/abhay/OneDrive/Desktop/MLKEM-PROJECT/firmware/hifive1/mlkem_hifive1_bench/Debug/mlkem_hifive1_bench.elf
+
+showAnalyzer usart2
+usart2 CreateFileBackend @C:/Users/abhay/OneDrive/Desktop/MLKEM-PROJECT/dataset/hifive1_raw_output.txt true
+
+logLevel 3 sysbus
+
+start
+
+# Wait for benchmark suite completion message in UART, then quit automatically!
+usart2 WaitFor "HiFive1 BENCHMARK SUITE COMPLETE!" 60000
+quit

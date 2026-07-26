@@ -1,0 +1,18 @@
+# Renode Simulation Script — STM32H7 ML-KEM Benchmark
+# Auto-Quit Enabled: Closes automatically when benchmark finishes!
+
+mach create "stm32h7"
+machine LoadPlatformDescription @platforms/boards/nucleo_h753zi.repl
+
+sysbus LoadELF @C:/Users/abhay/OneDrive/Desktop/MLKEM-PROJECT/firmware/stm32h7/mlkem_stm32h7_bench/Debug/mlkem_stm32h7_bench.elf
+
+showAnalyzer usart3
+usart3 CreateFileBackend @C:/Users/abhay/OneDrive/Desktop/MLKEM-PROJECT/dataset/stm32h7_raw_output.txt true
+
+logLevel 3 sysbus
+
+start
+
+# Wait for benchmark suite completion message in UART, then quit automatically!
+usart3 WaitFor "STM32H7 BENCHMARK SUITE COMPLETE!" 60000
+quit
