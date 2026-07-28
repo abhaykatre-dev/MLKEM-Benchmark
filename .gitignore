@@ -25,3 +25,20 @@ __pycache__/
 Thumbs.db
 Desktop.ini
 .DS_Store
+
+# Frontend (React/Vite)
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/.cache/
+
+# Frontend environment files
+frontend/.env
+frontend/.env.*
+!.env.example
+
+# Frontend logs
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/pnpm-debug.log*
