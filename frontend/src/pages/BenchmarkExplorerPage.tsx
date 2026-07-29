@@ -105,12 +105,12 @@ export const BenchmarkExplorerPage: React.FC = () => {
       <Card className="p-5">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded bg-slate-100 border border-slate-200 text-slate-800">
+            <div className="p-2.5 rounded bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-100">
               <Database className="w-6 h-6" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-slate-900 tracking-tight">Empirical Benchmark Data Explorer</h1>
-              <p className="text-xs text-slate-500">
+              <h1 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">Empirical Benchmark Data Explorer</h1>
+              <p className="text-xs text-slate-500 dark:text-slate-400">
                 Search, filter, and inspect physical microsecond execution latencies, clock cycles, and SRAM bounds
               </p>
             </div>
@@ -141,7 +141,7 @@ export const BenchmarkExplorerPage: React.FC = () => {
                 setSearchQuery(e.target.value);
                 setCurrentPage(1);
               }}
-              className="w-full pl-9 pr-3 py-1.5 bg-white border border-slate-300 rounded-md text-xs text-slate-900 placeholder-slate-400 focus:border-slate-800 outline-none"
+              className="w-full pl-9 pr-3 py-1.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-md text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:border-slate-800 dark:focus:border-slate-500 outline-none"
             />
           </div>
 
@@ -152,7 +152,7 @@ export const BenchmarkExplorerPage: React.FC = () => {
               setSelectedMcu(e.target.value);
               setCurrentPage(1);
             }}
-            className="w-full bg-white border border-slate-300 rounded-md px-3 py-1.5 text-xs text-slate-800 font-medium outline-none"
+            className="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-md px-3 py-1.5 text-xs text-slate-800 dark:text-slate-100 font-medium outline-none"
           >
             <option value="ALL">All Microcontrollers</option>
             <option value="STM32F072RBT6">STM32F072RBT6 (Cortex-M0)</option>
@@ -197,11 +197,11 @@ export const BenchmarkExplorerPage: React.FC = () => {
       <Card className="p-0 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-slate-100 border-b border-slate-200 text-slate-700 uppercase font-semibold">
+            <thead className="bg-slate-100 dark:bg-slate-800/70 border-b border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 uppercase font-semibold">
               <tr>
                 <th
                   onClick={() => handleSort('mcu')}
-                  className="py-3 px-3.5 cursor-pointer hover:text-slate-900"
+                  className="py-3 px-3.5 cursor-pointer hover:text-slate-900 dark:hover:text-white"
                 >
                   <div className="flex items-center gap-1">
                     Processor <ArrowUpDown className="w-3 h-3 text-slate-400" />
@@ -210,7 +210,7 @@ export const BenchmarkExplorerPage: React.FC = () => {
                 <th className="py-3 px-3">Variant</th>
                 <th
                   onClick={() => handleSort('keygen_us')}
-                  className="py-3 px-3 cursor-pointer hover:text-slate-900"
+                  className="py-3 px-3 cursor-pointer hover:text-slate-900 dark:hover:text-white"
                 >
                   <div className="flex items-center gap-1">
                     KeyGen <ArrowUpDown className="w-3 h-3 text-slate-400" />
@@ -239,12 +239,12 @@ export const BenchmarkExplorerPage: React.FC = () => {
                 <th className="py-3 px-3.5">Status</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-200">
+            <tbody className="divide-y divide-slate-200 dark:divide-slate-800">
               {paginatedRecords.map((row) => (
-                <tr key={row.id} className="hover:bg-slate-50 transition-colors">
+                <tr key={row.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
                   <td className="py-3 px-3.5">
-                    <span className="font-bold text-slate-900 block font-mono">{row.mcu}</span>
-                    <span className="text-[10px] text-slate-500">
+                    <span className="font-bold text-slate-900 dark:text-white block font-mono">{row.mcu}</span>
+                    <span className="text-[10px] text-slate-500 dark:text-slate-400">
                       {row.core} @ {row.clock_mhz} MHz
                     </span>
                   </td>
@@ -253,7 +253,7 @@ export const BenchmarkExplorerPage: React.FC = () => {
                       {row.variant}
                     </Badge>
                   </td>
-                  <td className="py-3 px-3 font-mono text-slate-800">
+                  <td className="py-3 px-3 font-mono text-slate-800 dark:text-slate-200">
                     {row.keygen_us === 'OOM' ? (
                       <span className="text-rose-700 font-bold">OOM</span>
                     ) : (
@@ -274,12 +274,12 @@ export const BenchmarkExplorerPage: React.FC = () => {
                       `${row.decap_us.toLocaleString()} µs`
                     )}
                   </td>
-                  <td className="py-3 px-3 text-slate-700 font-mono">{row.ram_kb} KB</td>
-                  <td className="py-3 px-3 text-slate-600 font-mono">{row.flash_kb} KB</td>
-                  <td className="py-3 px-3 text-slate-600 font-mono text-[11px]">
+                  <td className="py-3 px-3 text-slate-700 dark:text-slate-200 font-mono">{row.ram_kb} KB</td>
+                  <td className="py-3 px-3 text-slate-600 dark:text-slate-300 font-mono">{row.flash_kb} KB</td>
+                  <td className="py-3 px-3 text-slate-600 dark:text-slate-300 font-mono text-[11px]">
                     {row.encap_cycles === 'OOM' ? 'OOM' : row.encap_cycles.toLocaleString()}
                   </td>
-                  <td className="py-3 px-3 text-slate-800 font-mono font-medium">
+                  <td className="py-3 px-3 text-slate-800 dark:text-slate-200 font-mono font-medium">
                     {row.energy_uj ? `${row.energy_uj} µJ` : '-'}
                   </td>
                   <td className="py-3 px-3.5">
@@ -295,7 +295,7 @@ export const BenchmarkExplorerPage: React.FC = () => {
         </div>
 
         {/* Pagination Controls */}
-        <div className="p-3.5 bg-slate-50 border-t border-slate-200 flex items-center justify-between text-xs text-slate-600">
+        <div className="p-3.5 bg-slate-50 dark:bg-slate-800/60 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs text-slate-600 dark:text-slate-300">
           <span>
             Showing {Math.min(filteredRecords.length, (currentPage - 1) * itemsPerPage + 1)} to{' '}
             {Math.min(filteredRecords.length, currentPage * itemsPerPage)} of {filteredRecords.length} records
@@ -305,17 +305,17 @@ export const BenchmarkExplorerPage: React.FC = () => {
             <button
               disabled={currentPage === 1}
               onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-              className="px-3 py-1 rounded bg-white border border-slate-300 text-slate-700 disabled:opacity-40 cursor-pointer hover:bg-slate-50"
+              className="px-3 py-1 rounded bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 disabled:opacity-40 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-700"
             >
               Previous
             </button>
-            <span className="font-semibold text-slate-800 px-2">
+            <span className="font-semibold text-slate-800 dark:text-slate-100 px-2">
               Page {currentPage} of {totalPages || 1}
             </span>
             <button
               disabled={currentPage >= totalPages}
               onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
-              className="px-3 py-1 rounded bg-white border border-slate-300 text-slate-700 disabled:opacity-40 cursor-pointer hover:bg-slate-50"
+              className="px-3 py-1 rounded bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 disabled:opacity-40 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-700"
             >
               Next
             </button>

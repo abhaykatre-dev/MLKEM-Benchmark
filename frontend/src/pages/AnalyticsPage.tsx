@@ -77,7 +77,7 @@ export const AnalyticsPage: React.FC = () => {
   ];
 
   const tooltipStyle = {
-    backgroundColor: '#ffffff',
+    backgroundColor: 'var(--tooltip-bg, #ffffff)',
     borderColor: '#e2e8f0',
     borderRadius: '6px',
     boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)',
@@ -90,12 +90,12 @@ export const AnalyticsPage: React.FC = () => {
       {/* Top Header */}
       <Card className="p-5">
         <div className="flex items-center gap-3">
-          <div className="p-2.5 rounded bg-slate-100 border border-slate-200 text-slate-800">
+          <div className="p-2.5 rounded bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-100">
             <BarChart3 className="w-6 h-6" />
           </div>
           <div>
-            <h1 className="text-xl font-bold text-slate-900 tracking-tight">Performance & Resource Analytics</h1>
-            <p className="text-xs text-slate-500">
+            <h1 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">Performance & Resource Analytics</h1>
+            <p className="text-xs text-slate-500 dark:text-slate-400">
               Quantitative comparison of CPU cycles, execution latencies, SRAM footprints, Flash capacity, and energy consumption
             </p>
           </div>
@@ -135,8 +135,8 @@ export const AnalyticsPage: React.FC = () => {
         {/* Execution Time Comparison */}
         <div className="lg:col-span-6">
           <Card className="p-5">
-            <h3 className="text-sm font-bold text-slate-900 mb-4 flex items-center gap-2">
-              <Zap className="w-4 h-4 text-slate-700" /> Execution Time Comparison (Microseconds µs)
+            <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+              <Zap className="w-4 h-4 text-slate-700 dark:text-slate-300" /> Execution Time Comparison (Microseconds µs)
             </h3>
             <div className="h-64 w-full">
               <ResponsiveContainer width="100%" height="100%">
@@ -158,8 +158,8 @@ export const AnalyticsPage: React.FC = () => {
         {/* CPU Execution Cycles */}
         <div className="lg:col-span-6">
           <Card className="p-5">
-            <h3 className="text-sm font-bold text-slate-900 mb-4 flex items-center gap-2">
-              <Cpu className="w-4 h-4 text-slate-700" /> CPU Execution Cycles (in Kilo-Cycles)
+            <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+              <Cpu className="w-4 h-4 text-slate-700 dark:text-slate-300" /> CPU Execution Cycles (in Kilo-Cycles)
             </h3>
             <div className="h-64 w-full">
               <ResponsiveContainer width="100%" height="100%">
@@ -184,8 +184,8 @@ export const AnalyticsPage: React.FC = () => {
         {/* RAM Footprint Bar Chart */}
         <div className="lg:col-span-6">
           <Card className="p-5">
-            <h3 className="text-sm font-bold text-slate-900 mb-4 flex items-center gap-2">
-              <HardDrive className="w-4 h-4 text-slate-700" /> SRAM Footprint per Target (KB)
+            <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+              <HardDrive className="w-4 h-4 text-slate-700 dark:text-slate-300" /> SRAM Footprint per Target (KB)
             </h3>
             <div className="h-64 w-full">
               <ResponsiveContainer width="100%" height="100%">
@@ -204,8 +204,8 @@ export const AnalyticsPage: React.FC = () => {
         {/* Energy Consumption Chart */}
         <div className="lg:col-span-6">
           <Card className="p-5">
-            <h3 className="text-sm font-bold text-slate-900 mb-4 flex items-center gap-2">
-              <Activity className="w-4 h-4 text-slate-700" /> Energy Consumption per Operation (Microjoules µJ)
+            <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+              <Activity className="w-4 h-4 text-slate-700 dark:text-slate-300" /> Energy Consumption per Operation (Microjoules µJ)
             </h3>
             <div className="h-64 w-full">
               <ResponsiveContainer width="100%" height="100%">
@@ -227,8 +227,8 @@ export const AnalyticsPage: React.FC = () => {
         {/* Flash Usage Graph */}
         <div className="lg:col-span-4">
           <Card className="p-5">
-            <h3 className="text-sm font-bold text-slate-900 mb-4 flex items-center gap-2">
-              <HardDrive className="w-4 h-4 text-slate-700" /> Flash Memory Capacity (KB)
+            <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+              <HardDrive className="w-4 h-4 text-slate-700 dark:text-slate-300" /> Flash Memory Capacity (KB)
             </h3>
             <div className="h-64 w-full">
               <ResponsiveContainer width="100%" height="100%">
@@ -247,8 +247,8 @@ export const AnalyticsPage: React.FC = () => {
         {/* Multi-Dimensional Variant Evaluation Radar */}
         <div className="lg:col-span-5">
           <Card className="p-5">
-            <h3 className="text-sm font-bold text-slate-900 mb-4 flex items-center gap-2">
-              <BarChart3 className="w-4 h-4 text-slate-700" /> Multi-Dimensional Variant Comparison
+            <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+              <BarChart3 className="w-4 h-4 text-slate-700 dark:text-slate-300" /> Multi-Dimensional Variant Comparison
             </h3>
             <div className="h-64 w-full">
               <ResponsiveContainer width="100%" height="100%">
@@ -270,8 +270,8 @@ export const AnalyticsPage: React.FC = () => {
         {/* Verification Status Distribution (Pie Chart) */}
         <div className="lg:col-span-3">
           <Card className="p-5 flex flex-col justify-between h-full">
-            <h3 className="text-sm font-bold text-slate-900 mb-2 flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-emerald-600" /> Verification Status
+            <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" /> Verification Status
             </h3>
             <div className="h-48 w-full">
               <ResponsiveContainer width="100%" height="100%">
@@ -295,16 +295,16 @@ export const AnalyticsPage: React.FC = () => {
             </div>
             <div className="flex flex-col gap-1.5 text-xs">
               <div className="flex items-center justify-between">
-                <span className="flex items-center gap-1.5 text-slate-700">
+                <span className="flex items-center gap-1.5 text-slate-700 dark:text-slate-300">
                   <span className="w-2.5 h-2.5 rounded-full bg-emerald-600" /> PASS:
                 </span>
-                <span className="font-bold text-slate-900 font-mono">87.3%</span>
+                <span className="font-bold text-slate-900 dark:text-white font-mono">87.3%</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="flex items-center gap-1.5 text-slate-700">
+                <span className="flex items-center gap-1.5 text-slate-700 dark:text-slate-300">
                   <span className="w-2.5 h-2.5 rounded-full bg-rose-600" /> OOM:
                 </span>
-                <span className="font-bold text-slate-900 font-mono">12.7%</span>
+                <span className="font-bold text-slate-900 dark:text-white font-mono">12.7%</span>
               </div>
             </div>
           </Card>

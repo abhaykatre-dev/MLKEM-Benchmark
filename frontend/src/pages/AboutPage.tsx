@@ -29,14 +29,14 @@ export const AboutPage: React.FC = () => {
       {/* Top Banner */}
       <Card className="p-5">
         <div className="flex items-center gap-3">
-          <div className="p-2.5 rounded bg-slate-100 border border-slate-200 text-slate-800">
+          <div className="p-2.5 rounded bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-100">
             <Info className="w-6 h-6" />
           </div>
           <div>
-            <h1 className="text-xl font-bold text-slate-900 tracking-tight">
+            <h1 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">
               About Project & System Architecture
             </h1>
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-slate-500 dark:text-slate-400">
               Final Year B.Tech Computer Science Project in Post-Quantum Cryptography & Embedded Benchmarking
             </p>
           </div>
@@ -45,15 +45,15 @@ export const AboutPage: React.FC = () => {
 
       {/* Project Objective */}
       <Card className="p-5">
-        <h2 className="text-sm font-bold text-slate-900 mb-3 flex items-center gap-2">
-          <ShieldCheck className="w-4 h-4 text-slate-700" /> Project Objective & Research Scope
+        <h2 className="text-sm font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
+          <ShieldCheck className="w-4 h-4 text-slate-700 dark:text-slate-300" /> Project Objective & Research Scope
         </h2>
-        <p className="text-xs text-slate-700 leading-relaxed mb-3">
+        <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed mb-3">
           As the National Institute of Standards and Technology (NIST) standardizes Post-Quantum Cryptography (PQC) under FIPS 203,
           migrating resource-constrained Internet of Things (IoT) hardware to ML-KEM presents severe engineering challenges regarding stack RAM consumption,
           execution latency, and CPU frequency scaling.
         </p>
-        <p className="text-xs text-slate-700 leading-relaxed">
+        <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
           This project implements an empirical micro-benchmarking testbed across microcontroller targets (STM32F0, STM32F4, STM32H7, nRF52840, HiFive1) using Renode simulation.
           It collects physics-calibrated execution profiles (KeyGen, Encapsulation, Decapsulation, CPU Cycles, RAM Usage, Flash Usage, and Energy Consumption) and presents a research-oriented frontend dashboard for data exploration and decision modeling.
         </p>
@@ -61,68 +61,68 @@ export const AboutPage: React.FC = () => {
 
       {/* System Architecture Workflow */}
       <Card className="p-5">
-        <h2 className="text-sm font-bold text-slate-900 mb-4 flex items-center gap-2">
-          <Layers className="w-4 h-4 text-slate-700" /> End-to-End System Workflow
+        <h2 className="text-sm font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+          <Layers className="w-4 h-4 text-slate-700 dark:text-slate-300" /> End-to-End System Workflow
         </h2>
 
         {/* Visual Workflow Steps */}
         <div className="grid grid-cols-1 sm:grid-cols-5 gap-3">
-          <div className="p-3 rounded bg-stone-50 border border-slate-200 text-center">
-            <div className="w-7 h-7 rounded-full bg-slate-900 text-white flex items-center justify-center mx-auto mb-2 font-bold text-xs font-mono">
+          <div className="p-3 rounded bg-stone-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-center">
+            <div className="w-7 h-7 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 flex items-center justify-center mx-auto mb-2 font-bold text-xs font-mono">
               1
             </div>
-            <h4 className="text-xs font-bold text-slate-900 mb-1">C Codebase & Firmware</h4>
-            <p className="text-[11px] text-slate-500 leading-snug">Compile FIPS 203 C implementations using GCC</p>
+            <h4 className="text-xs font-bold text-slate-900 dark:text-white mb-1">C Codebase & Firmware</h4>
+            <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-snug">Compile FIPS 203 C implementations using GCC</p>
           </div>
 
-          <div className="p-3 rounded bg-stone-50 border border-slate-200 text-center">
-            <div className="w-7 h-7 rounded-full bg-slate-900 text-white flex items-center justify-center mx-auto mb-2 font-bold text-xs font-mono">
+          <div className="p-3 rounded bg-stone-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-center">
+            <div className="w-7 h-7 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 flex items-center justify-center mx-auto mb-2 font-bold text-xs font-mono">
               2
             </div>
-            <h4 className="text-xs font-bold text-slate-900 mb-1">Renode Simulation</h4>
-            <p className="text-[11px] text-slate-500 leading-snug">Execute on virtual ARM Cortex-M & RISC-V targets</p>
+            <h4 className="text-xs font-bold text-slate-900 dark:text-white mb-1">Renode Simulation</h4>
+            <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-snug">Execute on virtual ARM Cortex-M & RISC-V targets</p>
           </div>
 
-          <div className="p-3 rounded bg-stone-50 border border-slate-200 text-center">
-            <div className="w-7 h-7 rounded-full bg-slate-900 text-white flex items-center justify-center mx-auto mb-2 font-bold text-xs font-mono">
+          <div className="p-3 rounded bg-stone-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-center">
+            <div className="w-7 h-7 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 flex items-center justify-center mx-auto mb-2 font-bold text-xs font-mono">
               3
             </div>
-            <h4 className="text-xs font-bold text-slate-900 mb-1">UART Log Extraction</h4>
-            <p className="text-[11px] text-slate-500 leading-snug">Extract cycles, microseconds & memory parameters</p>
+            <h4 className="text-xs font-bold text-slate-900 dark:text-white mb-1">UART Log Extraction</h4>
+            <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-snug">Extract cycles, microseconds & memory parameters</p>
           </div>
 
-          <div className="p-3 rounded bg-stone-50 border border-slate-200 text-center">
-            <div className="w-7 h-7 rounded-full bg-slate-900 text-white flex items-center justify-center mx-auto mb-2 font-bold text-xs font-mono">
+          <div className="p-3 rounded bg-stone-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-center">
+            <div className="w-7 h-7 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 flex items-center justify-center mx-auto mb-2 font-bold text-xs font-mono">
               4
             </div>
-            <h4 className="text-xs font-bold text-slate-900 mb-1">Python Dataset Analysis</h4>
-            <p className="text-[11px] text-slate-500 leading-snug">Validate schema, compute stats & plot dataset summary</p>
+            <h4 className="text-xs font-bold text-slate-900 dark:text-white mb-1">Python Dataset Analysis</h4>
+            <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-snug">Validate schema, compute stats & plot dataset summary</p>
           </div>
 
-          <div className="p-3 rounded bg-stone-50 border border-slate-200 text-center">
-            <div className="w-7 h-7 rounded-full bg-slate-900 text-white flex items-center justify-center mx-auto mb-2 font-bold text-xs font-mono">
+          <div className="p-3 rounded bg-stone-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-center">
+            <div className="w-7 h-7 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 flex items-center justify-center mx-auto mb-2 font-bold text-xs font-mono">
               5
             </div>
-            <h4 className="text-xs font-bold text-slate-900 mb-1">React Research Dashboard</h4>
-            <p className="text-[11px] text-slate-500 leading-snug">Explore data, view analytics & recommendation UI</p>
+            <h4 className="text-xs font-bold text-slate-900 dark:text-white mb-1">React Research Dashboard</h4>
+            <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-snug">Explore data, view analytics & recommendation UI</p>
           </div>
         </div>
       </Card>
 
       {/* Technologies Used Grid */}
       <Card className="p-5">
-        <h2 className="text-sm font-bold text-slate-900 mb-4 flex items-center gap-2">
-          <Code2 className="w-4 h-4 text-slate-700" /> Technologies & Toolchain Stack
+        <h2 className="text-sm font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+          <Code2 className="w-4 h-4 text-slate-700 dark:text-slate-300" /> Technologies & Toolchain Stack
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
           {technologies.map((tech) => (
-            <div key={tech.name} className="p-3 rounded bg-stone-50 border border-slate-200">
+            <div key={tech.name} className="p-3 rounded bg-stone-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
               <Badge variant="info" size="sm" className="mb-1.5">
                 {tech.category}
               </Badge>
-              <h4 className="text-xs font-bold text-slate-900 font-mono mb-1">{tech.name}</h4>
-              <p className="text-[11px] text-slate-600 leading-snug">{tech.desc}</p>
+              <h4 className="text-xs font-bold text-slate-900 dark:text-white font-mono mb-1">{tech.name}</h4>
+              <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-snug">{tech.desc}</p>
             </div>
           ))}
         </div>
@@ -130,15 +130,15 @@ export const AboutPage: React.FC = () => {
 
       {/* Team Section */}
       <Card className="p-5">
-        <h2 className="text-sm font-bold text-slate-900 mb-3 flex items-center gap-2">
-          <Users className="w-4 h-4 text-slate-700" /> B.Tech Project Team
+        <h2 className="text-sm font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
+          <Users className="w-4 h-4 text-slate-700 dark:text-slate-300" /> B.Tech Project Team
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {teamMembers.map((member, idx) => (
-            <div key={idx} className="p-3.5 rounded bg-stone-50 border border-slate-200">
-              <h4 className="text-xs font-bold text-slate-900">{member.name}</h4>
-              <p className="text-[11px] text-slate-500 font-medium mb-1">{member.role}</p>
-              <p className="text-[11px] text-slate-600">{member.task}</p>
+            <div key={idx} className="p-3.5 rounded bg-stone-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
+              <h4 className="text-xs font-bold text-slate-900 dark:text-white">{member.name}</h4>
+              <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium mb-1">{member.role}</p>
+              <p className="text-[11px] text-slate-600 dark:text-slate-300">{member.task}</p>
             </div>
           ))}
         </div>
@@ -146,21 +146,21 @@ export const AboutPage: React.FC = () => {
 
       {/* References */}
       <Card className="p-5">
-        <h2 className="text-sm font-bold text-slate-900 mb-3 flex items-center gap-2">
-          <BookOpen className="w-4 h-4 text-slate-700" /> Key References & Standards
+        <h2 className="text-sm font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
+          <BookOpen className="w-4 h-4 text-slate-700 dark:text-slate-300" /> Key References & Standards
         </h2>
         <div className="space-y-2">
           {references.map((ref, idx) => (
-            <div key={idx} className="p-3 rounded bg-stone-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div key={idx} className="p-3 rounded bg-stone-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <div>
-                <h4 className="text-xs font-bold text-slate-900">{ref.title}</h4>
-                <p className="text-[11px] text-slate-500">{ref.desc}</p>
+                <h4 className="text-xs font-bold text-slate-900 dark:text-white">{ref.title}</h4>
+                <p className="text-[11px] text-slate-500 dark:text-slate-400">{ref.desc}</p>
               </div>
               <a
                 href={ref.url}
                 target="_blank"
                 rel="noreferrer"
-                className="text-[11px] font-semibold text-blue-700 hover:underline shrink-0"
+                className="text-[11px] font-semibold text-blue-700 dark:text-blue-400 hover:underline shrink-0"
               >
                 {ref.url}
               </a>
