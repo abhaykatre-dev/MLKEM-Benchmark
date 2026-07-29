@@ -11,14 +11,14 @@ export const MLKEMVariantsPage: React.FC = () => {
       {/* Header Banner */}
       <Card className="p-5">
         <div className="flex items-center gap-3">
-          <div className="p-2.5 rounded bg-slate-100 border border-slate-200 text-slate-800">
+          <div className="p-2.5 rounded bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-100">
             <Layers className="w-6 h-6" />
           </div>
           <div>
-            <h1 className="text-xl font-bold text-slate-900 tracking-tight">
+            <h1 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">
               NIST FIPS 203 ML-KEM Variant Specifications & Comparison
             </h1>
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-slate-500 dark:text-slate-400">
               Module-Lattice-Based Key-Encapsulation Mechanism (ML-KEM-512, ML-KEM-768, ML-KEM-1024) comparison table
             </p>
           </div>
@@ -27,88 +27,88 @@ export const MLKEMVariantsPage: React.FC = () => {
 
       {/* Side-by-Side Direct Comparison Table */}
       <Card className="p-5">
-        <h3 className="text-sm font-bold text-slate-900 mb-4 flex items-center gap-2">
-          <ShieldCheck className="w-4 h-4 text-slate-700" /> Variant Comparison Matrix
+        <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+          <ShieldCheck className="w-4 h-4 text-slate-700 dark:text-slate-300" /> Variant Comparison Matrix
         </h3>
 
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs border border-slate-200">
-            <thead className="bg-slate-100 text-slate-700 uppercase font-semibold">
-              <tr className="border-b border-slate-200">
-                <th className="py-3 px-4 border-r border-slate-200">Specification Parameter</th>
-                <th className="py-3 px-4 border-r border-slate-200">ML-KEM-512</th>
-                <th className="py-3 px-4 border-r border-slate-200">ML-KEM-768 (Default)</th>
+          <table className="w-full text-left text-xs border border-slate-200 dark:border-slate-700">
+            <thead className="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 uppercase font-semibold">
+              <tr className="border-b border-slate-200 dark:border-slate-700">
+                <th className="py-3 px-4 border-r border-slate-200 dark:border-slate-700">Specification Parameter</th>
+                <th className="py-3 px-4 border-r border-slate-200 dark:border-slate-700">ML-KEM-512</th>
+                <th className="py-3 px-4 border-r border-slate-200 dark:border-slate-700">ML-KEM-768 (Default)</th>
                 <th className="py-3 px-4">ML-KEM-1024 (Max Security)</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-200">
+            <tbody className="divide-y divide-slate-200 dark:divide-slate-700">
               <tr>
-                <td className="py-2.5 px-4 font-semibold text-slate-700 bg-slate-50 border-r border-slate-200">
+                <td className="py-2.5 px-4 font-semibold text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-800/60 border-r border-slate-200 dark:border-slate-700">
                   NIST Claimed Security Category
                 </td>
-                <td className="py-2.5 px-4 border-r border-slate-200">
+                <td className="py-2.5 px-4 text-slate-800 dark:text-slate-200 border-r border-slate-200 dark:border-slate-700">
                   <Badge variant="info">Category 1 (AES-128)</Badge>
                 </td>
-                <td className="py-2.5 px-4 border-r border-slate-200">
+                <td className="py-2.5 px-4 text-slate-800 dark:text-slate-200 border-r border-slate-200 dark:border-slate-700">
                   <Badge variant="purple">Category 3 (AES-192)</Badge>
                 </td>
-                <td className="py-2.5 px-4">
+                <td className="py-2.5 px-4 text-slate-800 dark:text-slate-200">
                   <Badge variant="emerald">Category 5 (AES-256)</Badge>
                 </td>
               </tr>
 
               <tr>
-                <td className="py-2.5 px-4 font-semibold text-slate-700 bg-slate-50 border-r border-slate-200">
+                <td className="py-2.5 px-4 font-semibold text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-800/60 border-r border-slate-200 dark:border-slate-700">
                   Module Matrix Dimension ($k$)
                 </td>
-                <td className="py-2.5 px-4 font-mono border-r border-slate-200">$k = 2$</td>
-                <td className="py-2.5 px-4 font-mono border-r border-slate-200">$k = 3$</td>
-                <td className="py-2.5 px-4 font-mono">$k = 4$</td>
+                <td className="py-2.5 px-4 font-mono text-slate-800 dark:text-slate-200 border-r border-slate-200 dark:border-slate-700">$k = 2$</td>
+                <td className="py-2.5 px-4 font-mono text-slate-800 dark:text-slate-200 border-r border-slate-200 dark:border-slate-700">$k = 3$</td>
+                <td className="py-2.5 px-4 font-mono text-slate-800 dark:text-slate-200">$k = 4$</td>
               </tr>
 
               <tr>
-                <td className="py-2.5 px-4 font-semibold text-slate-700 bg-slate-50 border-r border-slate-200">
+                <td className="py-2.5 px-4 font-semibold text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-800/60 border-r border-slate-200 dark:border-slate-700">
                   Public Key Size ($pk$)
                 </td>
-                <td className="py-2.5 px-4 font-mono border-r border-slate-200">800 Bytes</td>
-                <td className="py-2.5 px-4 font-mono border-r border-slate-200">1,184 Bytes</td>
-                <td className="py-2.5 px-4 font-mono">1,568 Bytes</td>
+                <td className="py-2.5 px-4 font-mono text-slate-800 dark:text-slate-200 border-r border-slate-200 dark:border-slate-700">800 Bytes</td>
+                <td className="py-2.5 px-4 font-mono text-slate-800 dark:text-slate-200 border-r border-slate-200 dark:border-slate-700">1,184 Bytes</td>
+                <td className="py-2.5 px-4 font-mono text-slate-800 dark:text-slate-200">1,568 Bytes</td>
               </tr>
 
               <tr>
-                <td className="py-2.5 px-4 font-semibold text-slate-700 bg-slate-50 border-r border-slate-200">
+                <td className="py-2.5 px-4 font-semibold text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-800/60 border-r border-slate-200 dark:border-slate-700">
                   Secret Key Size ($sk$)
                 </td>
-                <td className="py-2.5 px-4 font-mono border-r border-slate-200">1,632 Bytes</td>
-                <td className="py-2.5 px-4 font-mono border-r border-slate-200">2,400 Bytes</td>
-                <td className="py-2.5 px-4 font-mono">3,168 Bytes</td>
+                <td className="py-2.5 px-4 font-mono text-slate-800 dark:text-slate-200 border-r border-slate-200 dark:border-slate-700">1,632 Bytes</td>
+                <td className="py-2.5 px-4 font-mono text-slate-800 dark:text-slate-200 border-r border-slate-200 dark:border-slate-700">2,400 Bytes</td>
+                <td className="py-2.5 px-4 font-mono text-slate-800 dark:text-slate-200">3,168 Bytes</td>
               </tr>
 
               <tr>
-                <td className="py-2.5 px-4 font-semibold text-slate-700 bg-slate-50 border-r border-slate-200">
+                <td className="py-2.5 px-4 font-semibold text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-800/60 border-r border-slate-200 dark:border-slate-700">
                   Ciphertext Size ($c$)
                 </td>
-                <td className="py-2.5 px-4 font-mono border-r border-slate-200">768 Bytes</td>
-                <td className="py-2.5 px-4 font-mono border-r border-slate-200">1,088 Bytes</td>
-                <td className="py-2.5 px-4 font-mono">1,568 Bytes</td>
+                <td className="py-2.5 px-4 font-mono text-slate-800 dark:text-slate-200 border-r border-slate-200 dark:border-slate-700">768 Bytes</td>
+                <td className="py-2.5 px-4 font-mono text-slate-800 dark:text-slate-200 border-r border-slate-200 dark:border-slate-700">1,088 Bytes</td>
+                <td className="py-2.5 px-4 font-mono text-slate-800 dark:text-slate-200">1,568 Bytes</td>
               </tr>
 
               <tr>
-                <td className="py-2.5 px-4 font-semibold text-slate-700 bg-slate-50 border-r border-slate-200">
+                <td className="py-2.5 px-4 font-semibold text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-800/60 border-r border-slate-200 dark:border-slate-700">
                   Minimum SRAM Boundary
                 </td>
-                <td className="py-2.5 px-4 font-mono border-r border-slate-200 text-slate-900 font-bold">&ge; 16 KB SRAM</td>
-                <td className="py-2.5 px-4 font-mono border-r border-slate-200 text-slate-900 font-bold">&ge; 24 KB SRAM</td>
-                <td className="py-2.5 px-4 font-mono text-slate-900 font-bold">&ge; 32 KB SRAM</td>
+                <td className="py-2.5 px-4 font-mono text-slate-900 dark:text-white border-r border-slate-200 dark:border-slate-700 font-bold">&ge; 16 KB SRAM</td>
+                <td className="py-2.5 px-4 font-mono text-slate-900 dark:text-white border-r border-slate-200 dark:border-slate-700 font-bold">&ge; 24 KB SRAM</td>
+                <td className="py-2.5 px-4 font-mono text-slate-900 dark:text-white font-bold">&ge; 32 KB SRAM</td>
               </tr>
 
               <tr>
-                <td className="py-2.5 px-4 font-semibold text-slate-700 bg-slate-50 border-r border-slate-200">
+                <td className="py-2.5 px-4 font-semibold text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-800/60 border-r border-slate-200 dark:border-slate-700">
                   Target Microcontroller Range
                 </td>
-                <td className="py-2.5 px-4 border-r border-slate-200">Cortex-M0 / Low-Memory IoT</td>
-                <td className="py-2.5 px-4 border-r border-slate-200">Cortex-M4 / Standard Endpoints</td>
-                <td className="py-2.5 px-4">Cortex-M7 / High-Perf Gateways</td>
+                <td className="py-2.5 px-4 text-slate-700 dark:text-slate-300 border-r border-slate-200 dark:border-slate-700">Cortex-M0 / Low-Memory IoT</td>
+                <td className="py-2.5 px-4 text-slate-700 dark:text-slate-300 border-r border-slate-200 dark:border-slate-700">Cortex-M4 / Standard Endpoints</td>
+                <td className="py-2.5 px-4 text-slate-700 dark:text-slate-300">Cortex-M7 / High-Perf Gateways</td>
               </tr>
             </tbody>
           </table>
@@ -124,26 +124,26 @@ export const MLKEMVariantsPage: React.FC = () => {
 
       {/* Technical Reference Note */}
       <Card className="p-5">
-        <h3 className="text-sm font-bold text-slate-900 mb-2 flex items-center gap-2">
-          <BookOpen className="w-4 h-4 text-slate-700" /> NIST FIPS 203 Standard Overview
+        <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+          <BookOpen className="w-4 h-4 text-slate-700 dark:text-slate-300" /> NIST FIPS 203 Standard Overview
         </h3>
-        <p className="text-xs text-slate-600 leading-relaxed mb-4">
+        <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
           NIST FIPS 203 specifies the Module-Lattice-Based Key-Encapsulation Mechanism (ML-KEM), derived from the CRYSTALS-Kyber algorithm.
           It provides quantum-resistant public-key encryption. On resource-constrained IoT microcontrollers, the primary implementation challenge
           is managing the stack memory required during Number Theoretic Transform (NTT) polynomial multiplication without triggering Out-Of-Memory (OOM) stack collisions.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-          <div className="p-3 rounded bg-stone-50 border border-slate-200">
-            <span className="font-bold text-slate-900 font-mono block mb-1">ML-KEM-512</span>
-            <span className="text-slate-600">Uses $2 \times 2$ module matrix ($k=2$). Operates reliably on 16 KB SRAM targets like STM32F0.</span>
+          <div className="p-3 rounded bg-stone-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
+            <span className="font-bold text-slate-900 dark:text-white font-mono block mb-1">ML-KEM-512</span>
+            <span className="text-slate-600 dark:text-slate-300">Uses $2 \times 2$ module matrix ($k=2$). Operates reliably on 16 KB SRAM targets like STM32F0.</span>
           </div>
-          <div className="p-3 rounded bg-stone-50 border border-slate-200">
-            <span className="font-bold text-slate-900 font-mono block mb-1">ML-KEM-768</span>
-            <span className="text-slate-600">Uses $3 \times 3$ module matrix ($k=3$). Recommended NIST default for general post-quantum security.</span>
+          <div className="p-3 rounded bg-stone-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
+            <span className="font-bold text-slate-900 dark:text-white font-mono block mb-1">ML-KEM-768</span>
+            <span className="text-slate-600 dark:text-slate-300">Uses $3 \times 3$ module matrix ($k=3$). Recommended NIST default for general post-quantum security.</span>
           </div>
-          <div className="p-3 rounded bg-stone-50 border border-slate-200">
-            <span className="font-bold text-slate-900 font-mono block mb-1">ML-KEM-1024</span>
-            <span className="text-slate-600">Uses $4 \times 4$ module matrix ($k=4$). Maximum security grade requiring high-end Cortex-M7/RISC-V targets.</span>
+          <div className="p-3 rounded bg-stone-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
+            <span className="font-bold text-slate-900 dark:text-white font-mono block mb-1">ML-KEM-1024</span>
+            <span className="text-slate-600 dark:text-slate-300">Uses $4 \times 4$ module matrix ($k=4$). Maximum security grade requiring high-end Cortex-M7/RISC-V targets.</span>
           </div>
         </div>
       </Card>
