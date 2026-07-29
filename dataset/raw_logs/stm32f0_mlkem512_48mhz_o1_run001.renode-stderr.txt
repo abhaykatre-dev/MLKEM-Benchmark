@@ -1,0 +1,11 @@
+Unhandled exception. System.UnauthorizedAccessException: Access to the path 'C:\Users\abhay' is denied.
+   at System.IO.Enumeration.FileSystemEnumerator`1.CreateDirectoryHandle(String path, Boolean ignoreNotFound)
+   at System.IO.Enumeration.FileSystemEnumerator`1.Init()
+   at System.IO.Enumeration.FileSystemEnumerable`1..ctor(String directory, FindTransform transform, EnumerationOptions options, Boolean isNormalized)
+   at System.IO.Enumeration.FileSystemEnumerableFactory.UserFiles(String directory, String expression, EnumerationOptions options)
+   at System.IO.Directory.InternalEnumeratePaths(String path, String searchPattern, SearchTarget searchTarget, EnumerationOptions options)
+   at System.IO.Directory.GetFiles(String path, String searchPattern, EnumerationOptions enumerationOptions)
+   at Antmicro.Renode.Utilities.Misc.TryGetRootDirectory(String baseDirectory, String& directory)
+   at Antmicro.Renode.Utilities.Misc.TryGetRootDirectory(String& directory)
+   at Antmicro.Renode.Program.ConfigureEnvironment(Options options)
+   at Antmicro.Renode.Program.Main(String[] args)

@@ -1,0 +1,5 @@
+mach create "bench"
+machine LoadPlatformDescription @platforms/boards/stm32f4_discovery.repl
+sysbus LoadELF @C:/Users/abhay/OneDrive/Desktop/MLKEM-PROJECT/firmware/builds/stm32f4_mlkem1024_48mhz_o0.elf
+usart2 CreateFileBackend @C:/Users/abhay/OneDrive/Desktop/MLKEM-PROJECT/dataset/raw_logs/stm32f4_mlkem1024_48mhz_o0_run001.txt true
+start

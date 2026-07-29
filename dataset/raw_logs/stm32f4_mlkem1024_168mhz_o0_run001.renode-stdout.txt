@@ -1,0 +1,1 @@
+01:38:07.1818 [INFO] Loaded monitor commands from: C:\Program Files\Renode\scripts/monitor.py

@@ -1,0 +1,12 @@
+
+=======================================================
+  RESEARCH-GRADE ML-KEM BENCHMARK (NIST FIPS 203)
+  Target Processor: STM32H753ZIT6 (ARM Cortex-M7F)
+  Variant Compiled: ML-KEM-768
+=======================================================
+
+--- CSV DATASET OUTPUT ---
+variant,keygen_cycles,encap_cycles,decap_cycles,keygen_us,encap_us,decap_us,keygen_stddev,encap_stddev,decap_stddev,decap_ok,peak_stack
+ML-KEM-768,67081440,78636000,94821600,139753,163825,197545,823,869,869,1,17424
+
+BENCHMARK SUITE COMPLETE!

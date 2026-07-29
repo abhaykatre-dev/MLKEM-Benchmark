@@ -1,0 +1,32 @@
+03:02:50.6389 [INFO] Loaded monitor commands from: C:\Program Files\Renode\scripts/monitor.py
+03:02:50.6783 [INFO] Monitor available in telnet mode on port 30437
+03:02:50.9528 [INFO] Including script(s): C:\Users\abhay\OneDrive\Desktop\MLKEM-PROJECT\dataset\raw_logs\stm32f0_mlkem768_48mhz_os_run001.resc
+03:02:50.9915 [INFO] System bus created.
+03:02:53.5743 [INFO] sysbus: Loading block of 19428 bytes length at 0x8000000.
+03:02:53.6230 [INFO] sysbus: Loading block of 5468 bytes length at 0x8004BE4.
+03:02:53.6235 [INFO] sysbus: Loading block of 10756 bytes length at 0x8004C44.
+03:02:53.8328 [INFO] cpu: Guessing VectorTableOffset value to be 0x8000000.
+03:02:53.8591 [INFO] cpu: Setting initial values: PC = 0x8003B45, SP = 0x20004000.
+03:02:53.8637 [INFO] bench: Machine started.
+03:02:53.9143 [WARNING] sysbus: [cpu: 0x80003BA] (tag: 'FLASH_INTERFACE') ReadDoubleWord from non existing peripheral at 0x40022000, returning 0x00000000.
+03:02:53.9169 [WARNING] sysbus: [cpu: 0x80003C0] (tag: 'FLASH_INTERFACE') WriteDoubleWord to non existing peripheral at 0x40022000, value 0x10.
+03:02:54.0530 [WARNING] sysbus: [cpu: 0x8000B16] (tag: 'FLASH_INTERFACE') ReadDoubleWord from non existing peripheral at 0x40022000, returning 0x00000000.
+03:02:54.0531 [WARNING] sysbus: [cpu: 0x8000B58] (tag: 'FLASH_INTERFACE') ReadDoubleWord from non existing peripheral at 0x40022000, returning 0x00000000.
+03:02:54.0531 [WARNING] sysbus: [cpu: 0x8000B5E] (tag: 'FLASH_INTERFACE') WriteDoubleWord to non existing peripheral at 0x40022000, value 0x1.
+03:02:54.0531 [WARNING] sysbus: [cpu: 0x8000B60] (tag: 'FLASH_INTERFACE') ReadDoubleWord from non existing peripheral at 0x40022000, returning 0x00000000.
+03:02:54.1789 [WARNING] sysbus: [cpu: 0x8003E94] ReadDoubleWord from non existing peripheral at 0x20000.
+03:02:54.1790 [WARNING] sysbus: [cpu: 0x8003EDE] ReadDoubleWord from non existing peripheral at 0x20004.
+03:02:54.1797 [WARNING] sysbus: [cpu: 0x80040C8] ReadDoubleWord from non existing peripheral at 0x20004.
+03:02:54.1798 [WARNING] sysbus: [cpu: 0x80040D2] ReadDoubleWord from non existing peripheral at 0x20000.
+03:02:54.1798 [WARNING] sysbus: [cpu: 0x800410E] WriteDoubleWord to non existing peripheral at 0x20004, value 0x20001630.
+03:02:54.1798 [WARNING] sysbus: [cpu: 0x8003E94] ReadDoubleWord from non existing peripheral at 0x20000.
+03:02:54.1798 [WARNING] sysbus: [cpu: 0x8003EDE] ReadDoubleWord from non existing peripheral at 0x20004.
+03:02:54.1804 [WARNING] sysbus: [cpu: 0x80040C8] ReadDoubleWord from non existing peripheral at 0x20004.
+03:02:54.1805 [WARNING] sysbus: [cpu: 0x80040D2] ReadDoubleWord from non existing peripheral at 0x20000.
+03:02:54.1805 [WARNING] sysbus: [cpu: 0x800410E] WriteDoubleWord to non existing peripheral at 0x20004, value 0x20001700.
+03:02:54.1805 [WARNING] sysbus: [cpu: 0x8003E94] ReadDoubleWord from non existing peripheral at 0x20000.
+03:02:54.1805 [WARNING] sysbus: [cpu: 0x8003EDE] ReadDoubleWord from non existing peripheral at 0x20004.
+03:02:54.1806 [WARNING] sysbus: [cpu: 0x8003EE4] ReadDoubleWord from non existing peripheral at 0x20004.
+03:02:54.1806 [WARNING] sysbus: [cpu: 0x8003E50] ReadDoubleWord from non existing peripheral at 0x20000.
+03:02:54.1827 [WARNING] sysbus: [cpu: 0x2FFFE] ReadByte from non existing peripheral at 0x2FFFE.
+03:02:54.1851 [ERROR] cpu: CPU abort [PC=0x2FFFE]: Trying to execute code outside RAM or ROM at 0x0002FFFE.

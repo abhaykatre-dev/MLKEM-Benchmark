@@ -1,0 +1,12 @@
+
+=======================================================
+  RESEARCH-GRADE ML-KEM BENCHMARK (NIST FIPS 203)
+  Target Processor: STM32F407VGT6 (ARM Cortex-M4F)
+  Variant Compiled: ML-KEM-1024
+=======================================================
+
+--- CSV DATASET OUTPUT ---
+variant,keygen_cycles,encap_cycles,decap_cycles,keygen_us,encap_us,decap_us,keygen_stddev,encap_stddev,decap_stddev,decap_ok,peak_stack
+ML-KEM-1024,93648,102384,116784,1951,2133,2433,4,0,0,1,19908
+
+BENCHMARK SUITE COMPLETE!

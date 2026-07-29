@@ -1,0 +1,24 @@
+01:44:41.0601 [INFO] Loaded monitor commands from: C:\Program Files\Renode\scripts/monitor.py
+Renode, version 1.16.1 (d66b0c2a-202602161036)
+
+
+(monitor) s @C:\Users\abhay\OneDrive\Desktop\MLKEM-PROJECT\dataset\raw_logs\stm32f4_mlkem768_168mhz_o2_run001.resc
+
+01:44:41.3078 [INFO] Including script(s): C:\Users\abhay\OneDrive\Desktop\MLKEM-PROJECT\dataset\raw_logs\stm32f4_mlkem768_168mhz_o2_run001.resc
+01:44:41.3319 [INFO] System bus created.
+01:44:43.1520 [INFO] sysbus: Loaded SVD: C:\Users\abhay\AppData\Local\Temp\renode-22624\9e2d7dd8-d672-475f-842a-b025bd78b5b5.tmp. Name: STM32F40x. Description: STM32F40x.
+01:44:43.2098 [INFO] sysbus: Loading block of 20540 bytes length at 0x8000000.
+01:44:43.2250 [INFO] sysbus: Loading block of 96 bytes length at 0x800503C.
+01:44:43.2251 [INFO] sysbus: Loading block of 6848 bytes length at 0x20000060.
+Starting emulation...
+
+01:44:43.3731 [INFO] cpu: Guessing VectorTableOffset value to be 0x8000000.
+01:44:43.3940 [INFO] cpu: Setting initial values: PC = 0x8003E49, SP = 0x20020000.
+01:44:43.3977 [INFO] bench: Machine started.
+01:44:43.4543 [WARNING] flash_controller: Unhandled write to offset 0x0. Unhandled bits: [9] when writing value 0x200. Tags: ICEN (0x1).
+01:44:43.4560 [WARNING] flash_controller: Unhandled write to offset 0x0. Unhandled bits: [10] when writing value 0x400. Tags: DCEN (0x1).
+01:44:43.4561 [WARNING] flash_controller: Unhandled write to offset 0x0. Unhandled bits: [8] when writing value 0x100. Tags: PRFTEN (0x1).
+01:44:43.4699 [WARNING] rcc: Unhandled write to offset 0x4. Unhandled bits: [29] when writing value 0x4405408. Tags: RESERVED (0x0).
+01:44:43.4708 [WARNING] rcc: Unhandled write to offset 0x0. Unhandled bits: [19] when writing value 0x30B0483. Tags: CSSON (0x1).
+(bench) 01:44:43.6141 [INFO] bench: Machine paused.
+01:44:43.6799 [INFO] bench: Disposed.

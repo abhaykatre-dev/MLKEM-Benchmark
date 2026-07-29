@@ -10,7 +10,9 @@
 #include "stm32f4xx_hal.h"
 
 #define BENCHMARK_ITERATIONS  5
+#ifndef MCU_CLOCK_MHZ
 #define MCU_CLOCK_MHZ         64u    /* Cortex-M4 @ 64 MHz */
+#endif
 
 extern TIM_HandleTypeDef  htim2;
 extern UART_HandleTypeDef huart2;

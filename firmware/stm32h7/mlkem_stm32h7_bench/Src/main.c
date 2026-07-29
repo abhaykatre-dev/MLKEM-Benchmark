@@ -99,8 +99,9 @@ int main(void)
   MX_TIM2_Init();
   MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
-  HAL_TIM_Base_Start(&htim2);
-  benchmark_run_all();
+  BenchmarkResult res;
+  benchmark_run(&res);
+  benchmark_print_results(&res);
   /* USER CODE END 2 */
 
   /* Infinite loop */

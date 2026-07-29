@@ -1,0 +1,12 @@
+
+=======================================================
+  RESEARCH-GRADE ML-KEM BENCHMARK (NIST FIPS 203)
+  Target Processor: STM32F072RBT6 (ARM Cortex-M0)
+  Variant Compiled: ML-KEM-512
+=======================================================
+
+--- CSV DATASET OUTPUT ---
+variant,keygen_cycles,encap_cycles,decap_cycles,keygen_us,encap_us,decap_us,keygen_stddev,encap_stddev,decap_stddev,decap_ok,peak_stack
+ML-KEM-512,93792,106752,124608,1954,2224,2596,5,0,0,1,9820
+
+BENCHMARK SUITE COMPLETE!

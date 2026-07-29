@@ -1,0 +1,18 @@
+Fatal error:
+Unable to create '0.0.0.0:1234' socket:[AddressAlreadyInUse] Only one usage of each socket address (protocol/network address/port) is normally permitted.
+   at Antmicro.Renode.Sockets.SocketsManager.SocketInstance..ctor(IEmulationElement owner, AddressFamily addressFamily, SocketType socketType, ProtocolType protocolType, EndPoint endpoint, String nameAppendix, Nullable`1 listeningBacklog, Boolean asClient, Boolean noDelay)
+   at Antmicro.Renode.Sockets.SocketsManager.AcquireSocket(IEmulationElement owner, AddressFamily addressFamily, SocketType socketType, ProtocolType protocolType, EndPoint endpoint, String nameAppendix, Nullable`1 listeningBacklog, Boolean asClient, Boolean noDelay)
+   at Antmicro.Renode.Utilities.SocketServerProvider.Start(Int32 port)
+   at Antmicro.Renode.Utilities.SocketIOSource..ctor(Int32 port)
+   at Antmicro.Renode.UI.CommandLineInterface.PrepareShell(Options options, Monitor monitor)
+   at Antmicro.Renode.UI.CommandLineInterface.Run(Options options, Action`1 beforeRun)
+   at Antmicro.Renode.Program.<>c__DisplayClass0_0.<Main>b__1()
+
+Unhandled exception. Antmicro.Renode.Exceptions.RecoverableException: Unable to create '0.0.0.0:1234' socket:[AddressAlreadyInUse] Only one usage of each socket address (protocol/network address/port) is normally permitted.
+   at Antmicro.Renode.Sockets.SocketsManager.SocketInstance..ctor(IEmulationElement owner, AddressFamily addressFamily, SocketType socketType, ProtocolType protocolType, EndPoint endpoint, String nameAppendix, Nullable`1 listeningBacklog, Boolean asClient, Boolean noDelay)
+   at Antmicro.Renode.Sockets.SocketsManager.AcquireSocket(IEmulationElement owner, AddressFamily addressFamily, SocketType socketType, ProtocolType protocolType, EndPoint endpoint, String nameAppendix, Nullable`1 listeningBacklog, Boolean asClient, Boolean noDelay)
+   at Antmicro.Renode.Utilities.SocketServerProvider.Start(Int32 port)
+   at Antmicro.Renode.Utilities.SocketIOSource..ctor(Int32 port)
+   at Antmicro.Renode.UI.CommandLineInterface.PrepareShell(Options options, Monitor monitor)
+   at Antmicro.Renode.UI.CommandLineInterface.Run(Options options, Action`1 beforeRun)
+   at Antmicro.Renode.Program.<>c__DisplayClass0_0.<Main>b__1()
