@@ -57,12 +57,17 @@ def load_and_validate_dataset(csv_path: Path) -> Tuple[pd.DataFrame, Dict[str, A
         "mcu": "Processor",
         "processor": "Processor",
         "variant": "Variant",
+        "configured_clock_mhz": "Frequency",
         "clock_mhz": "Frequency",
         "frequency": "Frequency",
+        "peak_total_ram_bytes": "RAMBytes",
+        "static_ram_bytes": "StaticRAMBytes",
         "ram_kb": "RAM",
         "ram": "RAM",
+        "flash_bytes": "FlashBytes",
         "flash_kb": "Flash",
         "flash": "Flash",
+        "opt_level": "CompilerOptimization",
         "optimization": "CompilerOptimization",
         "compileroptimization": "CompilerOptimization",
         "compiler_optimization": "CompilerOptimization",
@@ -77,6 +82,7 @@ def load_and_validate_dataset(csv_path: Path) -> Tuple[pd.DataFrame, Dict[str, A
         "encap": "Encap",
         "decap_us": "Decap",
         "decap": "Decap",
+        "encap_timer_ticks": "Cycles",
         "encap_cycles": "Cycles",
         "cycles": "Cycles",
         "energy_uj": "Energy",
@@ -88,11 +94,16 @@ def load_and_validate_dataset(csv_path: Path) -> Tuple[pd.DataFrame, Dict[str, A
     df = df_raw.rename(columns=normalized_cols)
 
     # Replace string 'OOM' or invalid entries with NaN for numeric processing
-    for num_col in ["KeyGen", "Encap", "Decap", "Cycles", "Energy", "Frequency", "RAM", "Flash"]:
+    for num_col in ["KeyGen", "Encap", "Decap", "Cycles", "Energy", "Frequency", "RAM", "Flash", "RAMBytes", "FlashBytes"]:
         if num_col in df.columns:
             df[num_col] = pd.to_numeric(
                 df[num_col].astype(str).str.replace("OOM", "", case=False), errors="coerce"
             )
+
+    if "RAM" not in df.columns and "RAMBytes" in df.columns:
+        df["RAM"] = (df["RAMBytes"] / 1024.0).round(2)
+    if "Flash" not in df.columns and "FlashBytes" in df.columns:
+        df["Flash"] = (df["FlashBytes"] / 1024.0).round(2)
 
     # Synthesize/Infer missing standard columns if not present in input file
     if "CompilerOptimization" not in df.columns:
@@ -708,11 +719,14 @@ def generate_markdown_report(
 def main():
     """Main execution entry point."""
     base_dir = Path(__file__).resolve().parent.parent
-    csv_path = base_dir / "dataset" / "benchmark.csv"
+    csv_path = base_dir / "dataset" / "benchmark_renode_measurements.csv"
     
-    # Fallback to benchmark_1000.csv if benchmark.csv is missing
-    if not csv_path.exists() and (base_dir / "dataset" / "benchmark_1000.csv").exists():
-        csv_path = base_dir / "dataset" / "benchmark_1000.csv"
+    # Fallback to benchmark.csv or benchmark_1000.csv if benchmark_renode_measurements.csv is missing
+    if not csv_path.exists():
+        if (base_dir / "dataset" / "benchmark.csv").exists():
+            csv_path = base_dir / "dataset" / "benchmark.csv"
+        elif (base_dir / "dataset" / "benchmark_1000.csv").exists():
+            csv_path = base_dir / "dataset" / "benchmark_1000.csv"
 
     analysis_dir = base_dir / "analysis"
     plots_dir = analysis_dir / "plots"

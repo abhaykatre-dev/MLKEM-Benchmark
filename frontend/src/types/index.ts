@@ -1,9 +1,10 @@
 export type SecurityLevel = 'Level 1' | 'Level 3' | 'Level 5';
-export type OptimizationLevel = 'O0' | 'O1' | 'O2' | 'O3';
+export type OptimizationLevel = 'O0' | 'O1' | 'O2' | 'O3' | 'Os' | 'Ofast' | string;
 export type MLKEMVariant = 'ML-KEM-512' | 'ML-KEM-768' | 'ML-KEM-1024';
 
 export interface BenchmarkRecord {
   id: string;
+  experiment_id?: string;
   mcu: string;
   core: string;
   clock_mhz: number;
@@ -22,6 +23,7 @@ export interface BenchmarkRecord {
   decap_stddev_us?: number;
   energy_uj?: number; // Estimated microjoules
   optimization?: OptimizationLevel;
+  opt_level?: string;
   verification_status: 'PASS' | 'OOM' | 'FAIL';
   recommended_variant?: string;
 }

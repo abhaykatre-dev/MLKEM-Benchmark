@@ -25,28 +25,62 @@ import {
 import { BarChart3, Zap, Cpu, HardDrive, ShieldCheck, Activity } from 'lucide-react';
 
 export const AnalyticsPage: React.FC = () => {
-  // Chart 1: Execution Latency (KeyGen, Encap, Decap in microseconds)
-  const latencyData = BENCHMARK_DATASET.filter((d) => d.verification_status === 'PASS').map((d) => ({
-    name: `${d.mcu} (${d.variant})`,
-    KeyGen: typeof d.keygen_us === 'number' ? d.keygen_us : 0,
-    Encap: typeof d.encap_us === 'number' ? d.encap_us : 0,
-    Decap: typeof d.decap_us === 'number' ? d.decap_us : 0,
-  }));
+  // Aggregate representative latency data (averaging across runs/optimizations per MCU & Variant)
+  const latencyData = React.useMemo(() => {
+    const map = new Map<string, { KeyGen: number; Encap: number; Decap: number; count: number }>();
+    BENCHMARK_DATASET.filter((d) => d.verification_status === 'PASS').forEach((d) => {
+      const key = `${d.mcu} (${d.variant})`;
+      const existing = map.get(key) || { KeyGen: 0, Encap: 0, Decap: 0, count: 0 };
+      existing.KeyGen += typeof d.keygen_us === 'number' ? d.keygen_us : 0;
+      existing.Encap += typeof d.encap_us === 'number' ? d.encap_us : 0;
+      existing.Decap += typeof d.decap_us === 'number' ? d.decap_us : 0;
+      existing.count += 1;
+      map.set(key, existing);
+    });
+    return Array.from(map.entries()).map(([name, val]) => ({
+      name,
+      KeyGen: Math.round(val.KeyGen / val.count),
+      Encap: Math.round(val.Encap / val.count),
+      Decap: Math.round(val.Decap / val.count),
+    }));
+  }, []);
 
   // Chart 2: CPU Cycles Breakdown
-  const cyclesData = BENCHMARK_DATASET.filter((d) => d.verification_status === 'PASS').map((d) => ({
-    name: `${d.mcu}-${d.variant}`,
-    KeyGenCycles: typeof d.keygen_cycles === 'number' ? Math.round(d.keygen_cycles / 1000) : 0,
-    EncapCycles: typeof d.encap_cycles === 'number' ? Math.round(d.encap_cycles / 1000) : 0,
-    DecapCycles: typeof d.decap_cycles === 'number' ? Math.round(d.decap_cycles / 1000) : 0,
-  }));
+  const cyclesData = React.useMemo(() => {
+    const map = new Map<string, { KeyGenCycles: number; EncapCycles: number; DecapCycles: number; count: number }>();
+    BENCHMARK_DATASET.filter((d) => d.verification_status === 'PASS').forEach((d) => {
+      const key = `${d.mcu}-${d.variant}`;
+      const existing = map.get(key) || { KeyGenCycles: 0, EncapCycles: 0, DecapCycles: 0, count: 0 };
+      existing.KeyGenCycles += typeof d.keygen_cycles === 'number' ? Math.round(d.keygen_cycles / 1000) : 0;
+      existing.EncapCycles += typeof d.encap_cycles === 'number' ? Math.round(d.encap_cycles / 1000) : 0;
+      existing.DecapCycles += typeof d.decap_cycles === 'number' ? Math.round(d.decap_cycles / 1000) : 0;
+      existing.count += 1;
+      map.set(key, existing);
+    });
+    return Array.from(map.entries()).map(([name, val]) => ({
+      name,
+      KeyGenCycles: Math.round(val.KeyGenCycles / val.count),
+      EncapCycles: Math.round(val.EncapCycles / val.count),
+      DecapCycles: Math.round(val.DecapCycles / val.count),
+    }));
+  }, []);
 
   // Chart 3: RAM Footprint Comparison
-  const ramData = BENCHMARK_DATASET.map((d) => ({
-    name: `${d.mcu} (${d.variant})`,
-    RAM: d.ram_kb,
-    Status: d.verification_status,
-  }));
+  const ramData = React.useMemo(() => {
+    const map = new Map<string, { RAM: number; count: number }>();
+    BENCHMARK_DATASET.forEach((d) => {
+      const key = `${d.mcu} (${d.variant})`;
+      const existing = map.get(key) || { RAM: 0, count: 0 };
+      existing.RAM += d.ram_kb;
+      existing.count += 1;
+      map.set(key, existing);
+    });
+    return Array.from(map.entries()).map(([name, val]) => ({
+      name,
+      RAM: Number((val.RAM / val.count).toFixed(1)),
+      Status: 'PASS',
+    }));
+  }, []);
 
   // Chart 4: Flash Capacity Comparison
   const flashData = PROCESSOR_PROFILES.map((p) => ({
@@ -56,15 +90,28 @@ export const AnalyticsPage: React.FC = () => {
   }));
 
   // Chart 5: Energy Consumption Comparison (Microjoules)
-  const energyData = BENCHMARK_DATASET.filter((d) => d.verification_status === 'PASS' && d.energy_uj).map((d) => ({
-    name: `${d.mcu} (${d.variant})`,
-    Energy_uJ: d.energy_uj || 0,
-  }));
+  const energyData = React.useMemo(() => {
+    const map = new Map<string, { Energy_uJ: number; count: number }>();
+    BENCHMARK_DATASET.filter((d) => d.verification_status === 'PASS' && d.energy_uj).forEach((d) => {
+      const key = `${d.mcu} (${d.variant})`;
+      const existing = map.get(key) || { Energy_uJ: 0, count: 0 };
+      existing.Energy_uJ += d.energy_uj || 0;
+      existing.count += 1;
+      map.set(key, existing);
+    });
+    return Array.from(map.entries()).map(([name, val]) => ({
+      name,
+      Energy_uJ: Number((val.Energy_uJ / val.count).toFixed(2)),
+    }));
+  }, []);
 
   // Chart 6: Verification Status Pie Chart
+  const passCount = BENCHMARK_DATASET.filter((d) => d.verification_status === 'PASS').length;
+  const oomCount = BENCHMARK_DATASET.filter((d) => d.verification_status === 'OOM').length;
+
   const statusPieData = [
-    { name: 'PASS (Execution Success)', value: 1048, color: '#059669' },
-    { name: 'OOM (Out-Of-Memory)', value: 152, color: '#DC2626' },
+    { name: 'PASS (Execution Success)', value: passCount, color: '#059669' },
+    ...(oomCount > 0 ? [{ name: 'OOM (Out-Of-Memory)', value: oomCount, color: '#DC2626' }] : []),
   ];
 
   // Chart 7: Multi-Dimensional Variant Evaluation Radar
@@ -78,11 +125,11 @@ export const AnalyticsPage: React.FC = () => {
 
   const tooltipStyle = {
     backgroundColor: 'var(--tooltip-bg, #ffffff)',
-    borderColor: '#e2e8f0',
+    borderColor: 'var(--tooltip-border, #e2e8f0)',
     borderRadius: '6px',
-    boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)',
+    boxShadow: '0 4px 6px -1px rgba(0,0,0,0.15)',
     fontSize: '12px',
-    color: '#0f172a',
+    color: 'var(--tooltip-text, #0f172a)',
   };
 
   return (

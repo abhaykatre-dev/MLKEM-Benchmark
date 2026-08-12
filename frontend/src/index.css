@@ -2,9 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --tooltip-bg: #ffffff;
+  --tooltip-border: #e2e8f0;
+  --tooltip-text: #0f172a;
+}
+
+html.dark {
+  --tooltip-bg: #0f172a;
+  --tooltip-border: #334155;
+  --tooltip-text: #f8fafc;
+}
+
 @layer base {
   body {
-    @apply bg-[#F7F4EE] text-slate-800 dark:bg-slate-950 dark:text-slate-100 font-sans antialiased overflow-x-hidden transition-colors duration-200;
+    @apply bg-slate-100/80 text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans antialiased overflow-x-hidden transition-colors duration-200;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
@@ -14,7 +26,7 @@
     height: 6px;
   }
   ::-webkit-scrollbar-track {
-    @apply bg-[#F7F4EE] dark:bg-slate-900;
+    @apply bg-slate-200/50 dark:bg-slate-900;
   }
   ::-webkit-scrollbar-thumb {
     @apply bg-slate-300 dark:bg-slate-700 rounded;

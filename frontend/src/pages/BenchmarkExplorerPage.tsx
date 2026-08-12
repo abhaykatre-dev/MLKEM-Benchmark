@@ -156,10 +156,8 @@ export const BenchmarkExplorerPage: React.FC = () => {
           >
             <option value="ALL">All Microcontrollers</option>
             <option value="STM32F072RBT6">STM32F072RBT6 (Cortex-M0)</option>
-            <option value="STM32F407VGT6">STM32F407VGT6 (Cortex-M4)</option>
-            <option value="STM32H753ZIT6">STM32H753ZIT6 (Cortex-M7)</option>
-            <option value="nRF52840">nRF52840 (Cortex-M4)</option>
-            <option value="HiFive1">HiFive1 (RISC-V)</option>
+            <option value="STM32F407VGT6">STM32F407VGT6 (Cortex-M4F)</option>
+            <option value="STM32H753ZIT6">STM32H753ZIT6 (Cortex-M7F)</option>
           </select>
 
           {/* Variant Filter */}

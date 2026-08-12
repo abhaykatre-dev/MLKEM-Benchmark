@@ -30,7 +30,7 @@ app = FastAPI(
 
 # In-memory settings store
 SETTINGS_DB = {
-    "datasetSource": "benchmark.csv",
+    "datasetSource": "benchmark_renode_measurements.csv",
     "renodePath": "C:\\Program Files\\Renode\\renode.exe",
     "themePreference": "system",
     "cacheEnabled": True,
@@ -67,8 +67,11 @@ async def get_recommendation(inputs: RecommendationFormInputs):
 @app.get("/benchmarks", include_in_schema=False)
 async def get_benchmarks(type: Optional[str] = Query("baseline", description="'baseline' or 'full'")):
     data_dir = Path(__file__).resolve().parent.parent / "dataset"
-    file_name = "benchmark_1000.csv" if type == "full" else "benchmark.csv"
+    file_name = "recommendation_scenarios.csv" if type == "full" else "benchmark_renode_measurements.csv"
     csv_path = data_dir / file_name
+
+    if not csv_path.exists():
+        csv_path = data_dir / "benchmark_renode_measurements.csv"
 
     if not csv_path.exists():
         csv_path = data_dir / "benchmark.csv"
@@ -82,23 +85,39 @@ async def get_benchmarks(type: Optional[str] = Query("baseline", description="'b
             reader = csv.DictReader(f)
             for row in reader:
                 def parse_val(val, target_type=int):
-                    if val is None or val == "" or val == "OOM":
+                    if val is None or val == "" or val == "OOM" or val == "N/A":
                         return "OOM"
                     try:
                         return target_type(float(val))
                     except ValueError:
                         return val
 
+                clock_val = row.get("configured_clock_mhz") or row.get("clock_mhz") or 0
+
+                flash_val = row.get("flash_bytes")
+                if flash_val is not None and flash_val != "":
+                    flash_kb = parse_val(round(float(flash_val) / 1024.0, 1), float)
+                else:
+                    flash_kb = parse_val(row.get("flash_kb"), int)
+
+                ram_val = row.get("peak_total_ram_bytes") or row.get("static_ram_bytes")
+                if ram_val is not None and ram_val != "":
+                    ram_kb = parse_val(round(float(ram_val) / 1024.0, 1), float)
+                else:
+                    ram_kb = parse_val(row.get("ram_kb"), int)
+
                 record = {
+                    "id": row.get("experiment_id") or row.get("scenario_id") or f"{row.get('mcu')}_{row.get('variant')}",
                     "mcu": row.get("mcu", ""),
                     "core": row.get("core", ""),
-                    "clock_mhz": parse_val(row.get("clock_mhz"), int),
-                    "flash_kb": parse_val(row.get("flash_kb"), int),
-                    "ram_kb": parse_val(row.get("ram_kb"), int),
-                    "variant": row.get("variant", ""),
-                    "keygen_cycles": parse_val(row.get("keygen_cycles"), int),
-                    "encap_cycles": parse_val(row.get("encap_cycles"), int),
-                    "decap_cycles": parse_val(row.get("decap_cycles"), int),
+                    "clock_mhz": parse_val(clock_val, int),
+                    "flash_kb": flash_kb,
+                    "ram_kb": ram_kb,
+                    "variant": row.get("variant") or row.get("recommended_variant", ""),
+                    "optimization": row.get("opt_level") or row.get("optimization", "-O2"),
+                    "keygen_cycles": parse_val(row.get("keygen_timer_ticks") or row.get("keygen_cycles"), int),
+                    "encap_cycles": parse_val(row.get("encap_timer_ticks") or row.get("encap_cycles"), int),
+                    "decap_cycles": parse_val(row.get("decap_timer_ticks") or row.get("decap_cycles"), int),
                     "keygen_us": parse_val(row.get("keygen_us"), float),
                     "encap_us": parse_val(row.get("encap_us"), float),
                     "decap_us": parse_val(row.get("decap_us"), float),

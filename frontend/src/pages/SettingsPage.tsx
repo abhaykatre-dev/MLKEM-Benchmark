@@ -46,7 +46,7 @@ export const SettingsPage: React.FC = () => {
                 onClick={() => setUseLiveApi(false)}
                 className={`p-3.5 rounded-md border text-left transition-all cursor-pointer ${
                   !useLiveApi
-                    ? 'bg-slate-900 border-slate-900 text-white shadow-xs'
+                    ? 'bg-blue-600 border-blue-600 text-white shadow-xs dark:bg-blue-600 dark:border-blue-500'
                     : 'bg-white dark:bg-slate-800 border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700'
                 }`}
               >
@@ -61,7 +61,7 @@ export const SettingsPage: React.FC = () => {
                 onClick={() => setUseLiveApi(true)}
                 className={`p-3.5 rounded-md border text-left transition-all cursor-pointer ${
                   useLiveApi
-                    ? 'bg-slate-900 border-slate-900 text-white shadow-xs'
+                    ? 'bg-blue-600 border-blue-600 text-white shadow-xs dark:bg-blue-600 dark:border-blue-500'
                     : 'bg-white dark:bg-slate-800 border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700'
                 }`}
               >

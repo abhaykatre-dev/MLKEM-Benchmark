@@ -102,11 +102,11 @@ export const AIRecommendationPage: React.FC = () => {
                   className="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-md px-3 py-2 text-xs text-slate-900 dark:text-white font-medium outline-none focus:border-slate-800 dark:focus:border-slate-500"
                 >
                   {PROCESSOR_PROFILES.map((p) => (
-                    <option key={p.mcu} value={p.mcu} className="dark:bg-slate-900 dark:text-white">
+                    <option key={p.mcu} value={p.mcu} className="bg-white text-slate-900 dark:bg-slate-900 dark:text-white">
                       {p.mcu} ({p.core} @ {p.frequency} MHz, {p.ram} KB RAM)
                     </option>
                   ))}
-                  <option value="Custom" className="dark:bg-slate-900 dark:text-white">Custom Target Profile</option>
+                  <option value="Custom" className="bg-white text-slate-900 dark:bg-slate-900 dark:text-white">Custom Target Profile</option>
                 </select>
               </div>
 
@@ -158,7 +158,7 @@ export const AIRecommendationPage: React.FC = () => {
                         onClick={() => setFormInputs({ ...formInputs, securityLevel: lvl })}
                         className={`py-2 px-3 rounded-md text-xs font-bold border transition-all cursor-pointer text-center ${
                           isSelected
-                            ? 'bg-slate-900 dark:bg-blue-600 text-white border-slate-900 dark:border-blue-600 shadow-xs'
+                            ? 'bg-blue-600 text-white border-blue-600 shadow-xs dark:bg-blue-600 dark:border-blue-500'
                             : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700'
                         }`}
                       >
@@ -178,10 +178,10 @@ export const AIRecommendationPage: React.FC = () => {
                     onChange={(e) => setFormInputs({ ...formInputs, optimization: e.target.value as OptimizationLevel })}
                     className="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-md px-3 py-1.5 text-xs text-slate-900 dark:text-white font-medium outline-none"
                   >
-                    <option value="O0" className="dark:bg-slate-900 dark:text-white">-O0 (No Optimization)</option>
-                    <option value="O1" className="dark:bg-slate-900 dark:text-white">-O1 (Minimal Size)</option>
-                    <option value="O2" className="dark:bg-slate-900 dark:text-white">-O2 (Balanced Speed)</option>
-                    <option value="O3" className="dark:bg-slate-900 dark:text-white">-O3 (Max Speed)</option>
+                    <option value="O0" className="bg-white text-slate-900 dark:bg-slate-900 dark:text-white">-O0 (No Optimization)</option>
+                    <option value="O1" className="bg-white text-slate-900 dark:bg-slate-900 dark:text-white">-O1 (Minimal Size)</option>
+                    <option value="O2" className="bg-white text-slate-900 dark:bg-slate-900 dark:text-white">-O2 (Balanced Speed)</option>
+                    <option value="O3" className="bg-white text-slate-900 dark:bg-slate-900 dark:text-white">-O3 (Max Speed)</option>
                   </select>
                 </div>
 

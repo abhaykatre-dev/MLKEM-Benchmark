@@ -67,40 +67,40 @@ export const AboutPage: React.FC = () => {
 
         {/* Visual Workflow Steps */}
         <div className="grid grid-cols-1 sm:grid-cols-5 gap-3">
-          <div className="p-3 rounded bg-stone-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-center">
-            <div className="w-7 h-7 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 flex items-center justify-center mx-auto mb-2 font-bold text-xs font-mono">
+          <div className="p-3 rounded bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700 text-center">
+            <div className="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center mx-auto mb-2 font-bold text-xs font-mono shadow-2xs">
               1
             </div>
             <h4 className="text-xs font-bold text-slate-900 dark:text-white mb-1">C Codebase & Firmware</h4>
             <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-snug">Compile FIPS 203 C implementations using GCC</p>
           </div>
 
-          <div className="p-3 rounded bg-stone-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-center">
-            <div className="w-7 h-7 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 flex items-center justify-center mx-auto mb-2 font-bold text-xs font-mono">
+          <div className="p-3 rounded bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700 text-center">
+            <div className="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center mx-auto mb-2 font-bold text-xs font-mono shadow-2xs">
               2
             </div>
             <h4 className="text-xs font-bold text-slate-900 dark:text-white mb-1">Renode Simulation</h4>
             <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-snug">Execute on virtual ARM Cortex-M & RISC-V targets</p>
           </div>
 
-          <div className="p-3 rounded bg-stone-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-center">
-            <div className="w-7 h-7 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 flex items-center justify-center mx-auto mb-2 font-bold text-xs font-mono">
+          <div className="p-3 rounded bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700 text-center">
+            <div className="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center mx-auto mb-2 font-bold text-xs font-mono shadow-2xs">
               3
             </div>
             <h4 className="text-xs font-bold text-slate-900 dark:text-white mb-1">UART Log Extraction</h4>
             <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-snug">Extract cycles, microseconds & memory parameters</p>
           </div>
 
-          <div className="p-3 rounded bg-stone-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-center">
-            <div className="w-7 h-7 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 flex items-center justify-center mx-auto mb-2 font-bold text-xs font-mono">
+          <div className="p-3 rounded bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700 text-center">
+            <div className="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center mx-auto mb-2 font-bold text-xs font-mono shadow-2xs">
               4
             </div>
             <h4 className="text-xs font-bold text-slate-900 dark:text-white mb-1">Python Dataset Analysis</h4>
             <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-snug">Validate schema, compute stats & plot dataset summary</p>
           </div>
 
-          <div className="p-3 rounded bg-stone-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-center">
-            <div className="w-7 h-7 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 flex items-center justify-center mx-auto mb-2 font-bold text-xs font-mono">
+          <div className="p-3 rounded bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700 text-center">
+            <div className="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center mx-auto mb-2 font-bold text-xs font-mono shadow-2xs">
               5
             </div>
             <h4 className="text-xs font-bold text-slate-900 dark:text-white mb-1">React Research Dashboard</h4>

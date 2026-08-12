@@ -35,11 +35,11 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
     <div className="w-full">
       {(label || showValue) && (
         <div className="flex justify-between items-center text-xs mb-1 font-medium">
-          {label && <span className="text-slate-700">{label}</span>}
-          {showValue && <span className="text-slate-500 font-mono">{cappedValue}%</span>}
+          {label && <span className="text-slate-700 dark:text-slate-300">{label}</span>}
+          {showValue && <span className="text-slate-500 dark:text-slate-400 font-mono">{cappedValue}%</span>}
         </div>
       )}
-      <div className={`w-full bg-slate-100 rounded-full overflow-hidden border border-slate-200 ${heightStyles[size]}`}>
+      <div className={`w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden border border-slate-200 dark:border-slate-700 ${heightStyles[size]}`}>
         <div
           className={`h-full rounded-full transition-all duration-300 ease-out ${colorStyles[color]}`}
           style={{ width: `${cappedValue}%` }}
