@@ -4,20 +4,28 @@ import {
   BenchmarkRecord,
   ProcessorProfile,
   MLKEMVariantSpec,
+  AnalyticsSummary,
+  BackendSettings,
 } from '../types';
-import { runAIRecommendation } from './aiEngine';
 
-const API_BASE_URL = 'http://127.0.0.1:8000';
+export const getApiBaseUrl = (): string => {
+  return localStorage.getItem('apiBaseUrl') || 'http://127.0.0.1:8000';
+};
+
+export const setApiBaseUrl = (url: string): void => {
+  localStorage.setItem('apiBaseUrl', url);
+};
 
 /**
  * Fetch wrapper with timeout and error handling
  */
-async function fetchWithTimeout<T>(endpoint: string, options: RequestInit = {}, timeoutMs = 5000): Promise<T> {
+async function fetchWithTimeout<T>(endpoint: string, options: RequestInit = {}, timeoutMs = 6000): Promise<T> {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+  const baseUrl = getApiBaseUrl();
 
   try {
-    const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+    const response = await fetch(`${baseUrl}${endpoint}`, {
       ...options,
       signal: controller.signal,
       headers: {
@@ -29,34 +37,33 @@ async function fetchWithTimeout<T>(endpoint: string, options: RequestInit = {}, 
     clearTimeout(timeoutId);
 
     if (!response.ok) {
-      throw new Error(`HTTP Error ${response.status}: ${response.statusText}`);
+      const errorText = await response.text().catch(() => '');
+      throw new Error(`HTTP Error ${response.status}: ${response.statusText}${errorText ? ` (${errorText})` : ''}`);
     }
 
     return (await response.json()) as T;
-  } catch (error) {
+  } catch (error: any) {
     clearTimeout(timeoutId);
+    if (error?.name === 'AbortError') {
+      throw new Error('Connection timed out while reaching backend API server.');
+    }
     throw error;
   }
 }
 
 /**
- * Robust API service for backend interaction with client-side fallback
+ * API service for backend interaction
  */
 export const apiService = {
-  async getHealth(): Promise<{ status: string }> {
-    return fetchWithTimeout<{ status: string }>('/api/health');
+  async getHealth(): Promise<{ status: string; version?: string }> {
+    return fetchWithTimeout<{ status: string; version?: string }>('/api/health');
   },
 
   async getRecommendation(inputs: RecommendationFormInputs): Promise<RecommendationResult> {
-    try {
-      return await fetchWithTimeout<RecommendationResult>('/api/recommendation', {
-        method: 'POST',
-        body: JSON.stringify(inputs),
-      });
-    } catch (err) {
-      console.warn('Backend API offline or unreachable, utilizing client-side inference fallback:', err);
-      return runAIRecommendation(inputs);
-    }
+    return fetchWithTimeout<RecommendationResult>('/api/recommendation', {
+      method: 'POST',
+      body: JSON.stringify(inputs),
+    });
   },
 
   async getBenchmarks(type: 'baseline' | 'full' = 'baseline'): Promise<BenchmarkRecord[]> {
@@ -69,5 +76,20 @@ export const apiService = {
 
   async getVariants(): Promise<MLKEMVariantSpec[]> {
     return fetchWithTimeout<MLKEMVariantSpec[]>('/api/variants');
+  },
+
+  async getAnalytics(): Promise<AnalyticsSummary> {
+    return fetchWithTimeout<AnalyticsSummary>('/api/analytics');
+  },
+
+  async getSettings(): Promise<BackendSettings> {
+    return fetchWithTimeout<BackendSettings>('/api/settings');
+  },
+
+  async updateSettings(payload: Partial<BackendSettings>): Promise<{ status: string; settings: BackendSettings }> {
+    return fetchWithTimeout<{ status: string; settings: BackendSettings }>('/api/settings', {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    });
   },
 };

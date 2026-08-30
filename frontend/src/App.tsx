@@ -18,28 +18,11 @@ export function App() {
   const [activePage, setActivePage] = useState<PageId>('dashboard');
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
-  // Light / Dark mode state management
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      return savedTheme === 'dark';
-    }
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
-  });
-
   useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  }, [isDarkMode]);
-
-  const toggleDarkMode = () => {
-    setIsDarkMode((prev) => !prev);
-  };
+    // Ensure document element has light mode class
+    document.documentElement.classList.remove('dark');
+    localStorage.setItem('theme', 'light');
+  }, []);
 
   const handleNavigate = (page: PageId) => {
     setActivePage(page);
@@ -70,7 +53,7 @@ export function App() {
   };
 
   return (
-    <div className="flex min-h-screen bg-[#F7F4EE] dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans selection:bg-slate-200 dark:selection:bg-slate-700 transition-colors duration-200">
+    <div className="flex min-h-screen bg-[#F7F4EE] text-slate-800 font-sans selection:bg-slate-200">
       {/* Left Sidebar */}
       <Sidebar
         activePage={activePage}
@@ -86,8 +69,6 @@ export function App() {
           activePage={activePage}
           onNavigate={handleNavigate}
           onOpenMobileSidebar={() => setIsMobileSidebarOpen(true)}
-          isDarkMode={isDarkMode}
-          onToggleDarkMode={toggleDarkMode}
         />
 
         {/* Page Body Viewport */}

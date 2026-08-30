@@ -38,7 +38,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
     { id: 'dashboard' as PageId, label: 'Dashboard', icon: <LayoutDashboard className="w-4 h-4" /> },
     { id: 'benchmarks' as PageId, label: 'Benchmark Explorer', icon: <Database className="w-4 h-4" /> },
     { id: 'analytics' as PageId, label: 'Analytics & Graphs', icon: <BarChart3 className="w-4 h-4" /> },
-    { id: 'recommendation' as PageId, label: 'AI Recommendation (UI)', icon: <BrainCircuit className="w-4 h-4 text-amber-400" /> },
+    { id: 'recommendation' as PageId, label: 'AI Recommendation', icon: <BrainCircuit className="w-4 h-4 text-amber-400" /> },
     { id: 'processors' as PageId, label: 'Processors', icon: <Cpu className="w-4 h-4" /> },
     { id: 'variants' as PageId, label: 'ML-KEM Variants', icon: <Layers className="w-4 h-4" /> },
     { id: 'about' as PageId, label: 'About Project', icon: <Info className="w-4 h-4" /> },
@@ -51,7 +51,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       {isOpen && (
         <div
           onClick={onCloseMobile}
-          className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-40 lg:hidden"
+          className="fixed inset-0 bg-slate-900/50 backdrop-blur-xs z-40 lg:hidden"
         />
       )}
 

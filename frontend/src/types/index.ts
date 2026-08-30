@@ -90,3 +90,24 @@ export interface DashboardStats {
   totalPasses: number;
   totalOOMs: number;
 }
+
+export interface AnalyticsSummary {
+  totalBenchmarks: number;
+  totalPasses: number;
+  totalOOMs: number;
+  passRatePercent: number;
+  avgEncapLatencyUs: number;
+  supportedProcessors: number;
+  mlkemVariants: number;
+  aiAccuracyPercent: number;
+}
+
+export interface BackendSettings {
+  datasetSource: string;
+  renodePath: string;
+  themePreference: string;
+  cacheEnabled: boolean;
+  logLevel: string;
+  maxLatencyThresholdUs: number;
+}
+
